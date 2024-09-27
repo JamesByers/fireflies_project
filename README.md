@@ -27,6 +27,7 @@ V2 also known as Fireflies Hue adds the ability to read addition inputs.  An eig
 **Board v2.1.0**
 * Upgraded rotary switch to 8 selections instead of 7
 * Removed jumper used to force default settings, freeing up a pin for the rotarty switch
+
 **Board v2.0.1**
 
 
@@ -42,15 +43,12 @@ V2 also known as Fireflies Hue adds the ability to read addition inputs.  An eig
   </tr> 
 </table>
 
-
 * **Board v1.0.2**
   * Final V1 board design
-
   * Improved the layout for more effective ground plane and power distribution
 
-* Board v1.0.1 
+* **Board v1.0.1**
   * Added a ground plane to the PCB
-
   * Added 100 .1UF Capacitor
 
 * **Board v1.0.0**
@@ -58,7 +56,6 @@ V2 also known as Fireflies Hue adds the ability to read addition inputs.  An eig
   * Changed to a RP2024 Zero microcontroller from a Pi Pico
   * Replaced previous level shifter with an high speed XOR gate to shift the high speed signal from 3.3V to 5V.
   * Added a DIP switch to select between:
-
     * RGB Color order to assure the LED controller is compatible with all WS2812 RGB strings.
     * LED string lengths of 50, 100, 150, and 200 LED strings
     * Select alternate colors
