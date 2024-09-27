@@ -4,7 +4,12 @@ This project delivers both hardware and firmware for turning an addressable LED 
 
 <video src="C:\git\fireflies_project\assets\IMG_0222.MOV"></video>
 
+
+
+
+
 ### Background
+
 This project journey started in Fall of 2022 when I was experimenting with controlling led strings using microcontrollers to create outdoor Christmas lights.  A few months later I was reminiscing about seeing "lightning bugs" in summer while I was growing up.  The idea gelled to simulate the fireflies I remember so I could enjoy the effect any time of year.  
 
 My first prototype used a Arduino Nano as the microcontroller.  It was able to support five simultaneous and supported three knobs to adjust RGB values so I could experiment with color choices.
@@ -21,16 +26,26 @@ That resulted in the first prototype using the Pi Pico RP2040 microcontroller th
 
 #### V2 Hardware (Fireflies Hue)
 <p align="left">
-<img src="./assets/Fireflies_2_0_1_board_photo.png" width="400">
+<img src="./assets/Fireflies_2_0_1_board_photo_crop.png" width="400">
 </p>
 
-V2 also known as Fireflies Hue adds the ability to read addition inputs.  An eight position rotary switch replaces the v1 toggle switch. Three potentiometers are added to control Hue, number of concurrent fireflies, and percent mix of two colors.
+
+V2, also known as Fireflies Hue adds the ability to read addition inputs.  An eight position rotary switch replaces the v1 toggle switch. Three potentiometers are added to control Hue, number of concurrent fireflies, and percent mix of two colors.
 
 **Board v2.1.0**
-* Upgraded rotary switch to 8 selections instead of 7
-* Removed jumper used to force default settings, freeing up a pin for the rotarty switch
+
+* Upgraded rotary switch support to eight selections instead of seven.
+* Removed jumper used to force default settings, freeing up a pin for the rotary switch.
+* Added a top copper pour to reduce environmental impact of circuit board manufacture.
+* Positioned the small caps much closer to the XOR gate.
+* Changes input and output pads to through hole for better mechanical strength,
 
 **Board v2.0.1**
+
+- Replaced toggle switch with rotary switch.
+- Added support for three additional potentiometers.
+- Added support for a RS485 daughter board to support long distances to the first LED.  Designed to handle distances of up to 100m.
+- Added new custom Firefly Hue logo.
 
 
 #### V1 Hardware
@@ -48,11 +63,9 @@ V2 also known as Fireflies Hue adds the ability to read addition inputs.  An eig
 * **Board v1.0.2**
   * Final V1 board design
   * Improved the layout for more effective ground plane and power distribution
-
 * **Board v1.0.1**
-  * Added a ground plane to the PCB
-  * Added 100 .1UF Capacitor
-
+  * Added a ground plane to the PCB.
+  * Added .1uF capacitor for better power management for XOR gate.
 * **Board v1.0.0**
   * First PCB design (Printed Circuit Board)
   * Changed to a RP2024 Zero microcontroller from a Pi Pico
