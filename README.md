@@ -16,7 +16,9 @@ Soon after that I decided to change a faster microcontroller RP2020 and found mu
 That resulted in the first prototype using the Pi Pico RP2040 microcontroller that is still in use outdoors!  The journey has continues with an initial v1 and then the current V2 versions with increasing features.
 
 <p align="left"><img src="./assets/Fireflies_v1_box_w_lid.jpg" width="400"></p>
+
 ### Hardware Revision History
+
 #### V2 Hardware (Fireflies Hue)
 <p align="left">
 <img src="./assets/Fireflies_2_0_1_board_photo.png" width="400">
