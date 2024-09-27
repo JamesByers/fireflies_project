@@ -21,14 +21,29 @@ That resulted in the first prototype using the Pi Pico RP2040 microcontroller th
 <p align="left">
 <img src="./assets/Fireflies_2_0_1_board_photo.png" width="400">
 </p>
+
+V2 also known as Fireflies Hue adds the ability to read addition inputs.  An eight position rotary switch replaces the v1 toggle switch. Three potentiometers are added to control Hue, number of concurrent fireflies, and percent mix of two colors.
+
+**Board v2.1.0**
+* Upgraded rotary switch to 8 selections instead of 7
+* Removed jumper used to force default settings, freeing up a pin for the rotarty switch
+**Board v2.0.1**
+
+
 #### V1 Hardware
-<p align="left"><img src="./assets/Fireflies_std_v1_0_2.png" width="400"></p>
+<table>
+  <tr>
+    <td>
+    	<img src="./assets/Fireflies_std_v1_0_2.png"  alt="1" width = 400px >
+	</td>
+    <td>
+    	<img src="./assets/Fireflies_v1_box_w_lid.jpg" alt="2" width = 400px >
+    </td>
+  </tr> 
+</table>
 
-Features
 
-<p align="left"><img src="./assets/Fireflies_v1_box_w_lid.jpg" width="400"></p>
-
-* Board v1.0.2 
+* **Board v1.0.2**
   * Final V1 board design
 
   * Improved the layout for more effective ground plane and power distribution
@@ -38,7 +53,7 @@ Features
 
   * Added 100 .1UF Capacitor
 
-* Board v1.0.0
+* **Board v1.0.0**
   * First PCB design (Printed Circuit Board)
   * Changed to a RP2024 Zero microcontroller from a Pi Pico
   * Replaced previous level shifter with an high speed XOR gate to shift the high speed signal from 3.3V to 5V.
