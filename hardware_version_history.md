@@ -61,7 +61,7 @@ It worked!
 
 I learned from the prototype that the 3.3V-5V level shifter was actually *reducing the voltage* of the 800 kHz communication to the LEDs.  Yikes!
 
-![](C:\Users\byerj023\Downloads\Fireflies_pi_pico_prototype.jpg)
+![](./assets/Fireflies_pi_pico_prototype.jpg)
 
 
 
