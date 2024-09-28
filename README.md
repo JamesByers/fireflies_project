@@ -66,6 +66,7 @@ This project delivers both hardware and firmware for turning an addressable LED 
 *  [Sample code](./code/Firefly_and_rainbow_rpzero_dimmer_brd_2_0_1/Firefly_and_rainbow_rpzero_dimmer_brd_2_0_1.ino). Written in Arduino C++. 
 *  Schedules new fireflies
 *  Controls rising and falling brightness of each firefly
+*  Turns on the last LED for 2 seconds at startup to verify the string is working
 * Reads the DIP switch and configures for
   * 50, 100, 150, or 200 LED strings
   
@@ -73,15 +74,14 @@ This project delivers both hardware and firmware for turning an addressable LED 
   
   * Select alternate color
 *  Reads the rotary knob to determine which one of the eight color affects to apply
-   *  Yellow fireflies
-   *  All hues, slowly shifting.
-   *  Warm white
-   *  85% Orange, 15% Purple (Halloween)
-   *  85% Blue, 15% Green
-   *  85% Green, 15% Blue
-   *  85% Green, 15% Red
-   *  Blue through Green palette, slowly shifting
-   *  Turns on the last LED for 2 seconds at startup to verify the string is working
+   1.  Yellow fireflies
+   2.  All hues, slowly shifting.
+   3.  Warm white
+   4.  85% Orange, 15% Purple (Halloween)
+   5.  85% Blue, 15% Green
+   6.  85% Green, 15% Blue
+   7.  85% Green, 15% Red
+   8.  Blue through Green palette, slowly shifting
 
 
 ### How this project started
@@ -100,6 +100,5 @@ That resulted in my first prototype on protoboard.  It used a Pi Pico RP2040 mic
 
 <p align=left>
             <img src="./assets/Fireflies_logo_2_0.png" alt="1" width = 250px></p>
-
 
 
