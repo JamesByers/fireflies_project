@@ -2,7 +2,11 @@
 
 This project delivers both hardware and firmware for turning an addressable LED string into simulated fireflies
 
-<video src="./assets/IMG_0222.MOV"></video>
+Click image for video
+
+[<img src="./assets/20240608_155041.jpg">](https://photos.app.goo.gl/UaPuwaba9bqjVWHB6)
+
+
 
 ## What the Fireflies LED Controller can do
 * Turns an LED string into simulated fireflies
