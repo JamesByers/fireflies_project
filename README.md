@@ -7,66 +7,92 @@ This project delivers both hardware and firmware for turning an addressable LED 
 ## What the Fireflies LED Controller can do
 * Turns an LED string into simulated fireflies
 * Select from 8 color effect choices with a turn of a knob
-* Allows you to dim for more realistic fireflies. Or select full brightness to use for holiday lights.
-* Supports two different builds
-  * A simple two knob build for a simple interface
+* Allows you to dim for realistic fireflies. Or select full brightness to use for holiday lights.
+* Supports two different builds from same circuit board
+  * A two knob build for a simple interface and easier build
   * A five knob build that allows you to select any hue, the number of concurrent fireflies, and the percentage mix of colors
 
 * Works with any WS2812 LED string
 
+### User guides
 
+* [V1 Fireflies LED Controllers](https://github.com/JamesByers/fireflies_led_controllers)
+* V2 Fireflies Hue (under development)
+
+<p align="left"><img src="./assets/Fireflies_2_0_1_board_photo.png" height=400 ></img></p>
 
 ### The Hardware
 
 * New compact implementation fits in a 4 x 2.75 x 2 inch project box
-* Supports 10m of wire 
-* Optional RS485 daughter board supports up to 100m of wire between the controller and the first LED daughter board
+* Optional RS485 daughter board supports up to 100m of wire between the controller and the first LED daughter board.  30m of wire supported without the daughter board
 * Incorporates a Waveshare RP2040 Zero microcontroller module
 * Uses a fast surface mount XOR gate to boost to the [5V 800 kHz signal](./assets/800kHz_original_and level shifted_double_1_5.png) required by the LEDs
 * Custom circuit board design with full ground plane and top copper pour.  Utilizes all top side exposed RP2040 Zero pins
-  * [Schematic](Schematic Editor)
+  * [Full Schematic](Fireflies_2_0_1_schematic.pdf) (PDF)
   * Kicad PCB design files available
+  * 56mm x 66mm
 
 <table>
   <tr>
     <td>
-    	<img src="./assets/Fireflies_2_1_0_board_3d.png"  alt="1" width = 400px >
+    	<p align=center>
+            <img src="./assets/Fireflies_hue_v2_1_0_top.png" alt="1" width = 400px ></p>
 	</td>
     <td>
-    	<img src="./assets/Fireflies_hue_v2_1_0_top.png" alt="2" width = 400px >
+        <p align=center>
+            <img src="./assets/Fireflies_2_1_0_board_3d.png"  alt="2" width = 400px ></p>
+    </td>
+  </tr> 
+</table>
+
+#### Optional RS485 daughter board
+
+<table>
+  <tr>
+    <td>
+    	<p align=center>
+            <img src="./assets/Fireflies_hue_RS485_daughter_board_1_0_0.png" alt="1" width = 250px></p>
+	</td>
+    <td>
+        <p align=center>
+            <img src="./assets/Fireflies_hue_RS485_daughter_board_1_0_0_3d_crop.png"  alt="2" width = 250px ></p>
     </td>
   </tr> 
 </table>
 
 ### The Firmware
 
-* Written in Arduino C++
+*  [Sample code](./code/Firefly_and_rainbow_rpzero_dimmer_brd_2_0_1). Written in Arduino C++. 
 
-* Reads a DIP switch and configures for
+* Schedules new fireflies
 
+* Controls rising and falling brightness of each firefly
+
+* Reads the DIP switch and configures for
   * 50, 100, 150, or 200 LED strings
-
+  
   * Any color order (RGB, BGR, etc.)
-
-  * Alternate color to warm white
-
-* Reads the rotary knob to determine the of color affect
-
-  * Yellow fireflies
-
-  * All hues, slowly shifting.
-
-  * Warm white
-
-  * 85% Orange, 15% Purple (Halloween)
-
-  * 85% Blue, 15% Green
-
-  * 85% Green, 15% Blue
-
-  * 85% Green, 15% Red
-
-  * Blue through Green palette, slowly shifting
+  
+  * Select alternate color to warm white
+  
+*  Schedules new fir
+* Reads the rotary knob to determine the of color affect to apply
+* Yellow fireflies
+  
+* All hues, slowly shifting.
+  
+* Warm white
+  
+* 85% Orange, 15% Purple (Halloween)
+  
+* 85% Blue, 15% Green
+  
+* 85% Green, 15% Blue
+  
+* 85% Green, 15% Red
+  
+* Blue through Green palette, slowly shifting
+* Turns on the last LED for 2 seconds at startup to verify the string is working
 
 ### How this project started
 
