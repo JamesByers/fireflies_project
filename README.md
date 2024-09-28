@@ -102,7 +102,7 @@ Soon after that I decided to change to a faster microcontroller.  And I found mu
 
 That resulted in my first prototype on protoboard.  It used a Pi Pico RP2040 microcontroller board and is still in use outdoors!  The journey continued with a v1 circuit board implementation in a smaller box.  That led to the current V2 version with additional features.   
 
-**[Hardware Revision History with images](./hardware_revision_history.md)**
+**[Hardware Revision History with images](hardware_version_history.md)**
 
 <p align=left>
             <img src="./assets/Fireflies_logo_2_0.png" alt="1" width = 250px></p>
