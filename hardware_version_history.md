@@ -4,7 +4,7 @@
 
 This page provides information about each revision of the V1 (original) and V2 (FIreflies Hue) hardware implementations.
 
-#### V2 Hardware (Fireflies Hue)
+### V2 Hardware (Fireflies Hue)
 
 **V2**, also known as Fireflies Hue adds the ability to read addition inputs.  An eight position rotary switch replaces the v1 toggle switch. Three potentiometers are added to control Hue, number of concurrent fireflies, and percent mix of two colors.
 
@@ -30,7 +30,7 @@ This page provides information about each revision of the V1 (original) and V2 (
 - Added new custom Firefly Hue logo.
 
 
-#### V1 Hardware - The original Fireflies LED Controller!
+### V1 Hardware - The original Fireflies LED Controller!
 <table>
   <tr>
     <td>
@@ -58,7 +58,7 @@ This page provides information about each revision of the V1 (original) and V2 (
     * LED string lengths of 50, 100, 150, and 200 LED strings
     * Select alternate colors
 
-#### Pi Pico RP2040 original prototype
+### Pi Pico RP2040 original prototype
 
 It worked!
 
