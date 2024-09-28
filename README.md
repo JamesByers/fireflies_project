@@ -44,6 +44,7 @@ This project delivers both hardware and firmware for turning an addressable LED 
     </td>
   </tr> 
 </table>
+
 #### Optional RS485 daughter board
 
 [Schematic](./assets/Fireflies_v2_rs485_daughter_board_schematic.pdf)
