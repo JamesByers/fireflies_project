@@ -63,7 +63,7 @@ This project delivers both hardware and firmware for turning an addressable LED 
 
 ### The Firmware
 
-*  [Sample code](./code/Firefly_and_rainbow_rpzero_dimmer_brd_2_0_1). Written in Arduino C++. 
+*  [Sample code](./code/Firefly_and_rainbow_rpzero_dimmer_brd_2_0_1/Firefly_and_rainbow_rpzero_dimmer_brd_2_0_1.ino). Written in Arduino C++. 
 *  Schedules new fireflies
 *  Controls rising and falling brightness of each firefly
 * Reads the DIP switch and configures for
