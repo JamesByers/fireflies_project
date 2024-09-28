@@ -108,3 +108,8 @@ That resulted in my first prototype on protoboard.  It used a Pi Pico RP2040 mic
 
 **[Hardware Revision History with images][./hardware_revision_history.md]**
 
+<p align=center>
+            <img src="./assets/Fireflies_logo_2_0.png" alt="1" width = 250px></p>
+
+
+
