@@ -17,7 +17,7 @@ This project delivers both hardware and firmware for turning an addressable LED 
 ### User guides
 
 * [V1 Fireflies LED Controllers](https://github.com/JamesByers/fireflies_led_controllers)
-* V2 Fireflies Hue (under development)
+* V2 Fireflies Hue (guide under development)
 
 <p align="left"><img src="./assets/Fireflies_2_0_1_board_photo.png" height=400 ></img></p>
 
@@ -44,8 +44,9 @@ This project delivers both hardware and firmware for turning an addressable LED 
     </td>
   </tr> 
 </table>
-
 #### Optional RS485 daughter board
+
+[Schematic](Fireflies_v2_rs485_daughter_board_schematic.pdf)
 
 <table>
   <tr>
