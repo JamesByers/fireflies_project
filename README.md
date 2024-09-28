@@ -32,7 +32,7 @@ Click image for video
 * Incorporates a Waveshare RP2040 Zero microcontroller module
 * Uses a fast surface mount XOR gate to boost to the [5V 800 kHz signal](./assets/800kHz_original_and level shifted_double_1_5.png) required by the LEDs
 * Custom circuit board design with full ground plane and top copper pour.  Utilizes all top side exposed RP2040 Zero pins
-  * [Schematic](,/assets/Fireflies_2_0_1_schematic.pdf) (PDF)
+  * [Schematic](./assets/Fireflies_2_0_1_schematic.pdf) (PDF)
   * Kicad PCB design files available
   * 56mm x 66mm
 
