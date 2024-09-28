@@ -24,11 +24,11 @@ This project delivers both hardware and firmware for turning an addressable LED 
 ### The Hardware
 
 * New compact implementation fits in a 4 x 2.75 x 2 inch project box
-* Optional RS485 daughter board supports up to 100m of wire between the controller and the first LED daughter board.  30m of wire supported without the daughter board
+* Optional RS485 daughter board supports up to 50m of wire between the controller and the first LED daughter board.  10m of wire is supported without the daughter board
 * Incorporates a Waveshare RP2040 Zero microcontroller module
 * Uses a fast surface mount XOR gate to boost to the [5V 800 kHz signal](./assets/800kHz_original_and level shifted_double_1_5.png) required by the LEDs
 * Custom circuit board design with full ground plane and top copper pour.  Utilizes all top side exposed RP2040 Zero pins
-  * [Full Schematic](,/assets/Fireflies_2_0_1_schematic.pdf) (PDF)
+  * [Schematic](,/assets/Fireflies_2_0_1_schematic.pdf) (PDF)
   * Kicad PCB design files available
   * 56mm x 66mm
 
@@ -46,7 +46,7 @@ This project delivers both hardware and firmware for turning an addressable LED 
 </table>
 #### Optional RS485 daughter board
 
-[Schematic](Fireflies_v2_rs485_daughter_board_schematic.pdf)
+[Schematic](./assets/Fireflies_v2_rs485_daughter_board_schematic.pdf)
 
 <table>
   <tr>
