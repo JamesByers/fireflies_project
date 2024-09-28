@@ -55,7 +55,7 @@ This project delivers both hardware and firmware for turning an addressable LED 
 	</td>
     <td>
         <p align=center>
-            <img src="./assets/Fireflies_hue_RS485_daughter_board_1_0_0_3d_crop.png"  alt="2" width = 255px ></p>
+            <img src="./assets/Fireflies_hue_RS485_daughter_board_1_0_0_3d_crop.png"  alt="2" width = 252px ></p>
     </td>
   </tr> 
 </table>
