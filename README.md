@@ -1,6 +1,4 @@
-# [](./assets/Fireflies_logo_2_0.png)The Fireflies LED 
-
-# Controller Project
+[](./assets/Fireflies_logo_2_0.png) # The Fireflies LED Controller Project
 
 This project delivers both hardware and firmware for turning an addressable LED string into simulated fireflies
 
