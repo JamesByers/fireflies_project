@@ -1,4 +1,4 @@
-# The Fireflies Project
+# <img src="./assets/Fireflies_logo_2_0.png" height = 64px > The Fireflies Project
 
 ## Hardware version history
 
