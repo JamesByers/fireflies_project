@@ -1,7 +1,4 @@
-# <img src="./assets/Fireflies_logo_2_0.png" height = 64px > The Fireflies Project
-
-## Hardware version history
-
+# <img src="./assets/Fireflies_logo_2_0.png" height = 64px > The Fireflies Project - Hardware Revision History
 This page provides information about each revision of the V1 (original) and V2 (FIreflies Hue) hardware implementations.
 
 ### V2 Hardware (Fireflies Hue)
