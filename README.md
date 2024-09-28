@@ -1,4 +1,4 @@
-# The Fireflies LED Controller Project
+# <img src="./assets/Fireflies_logo_2_0.png" height = 64px > The Fireflies LED Controller Project
 
 This project delivers both hardware and firmware for turning an addressable LED string into simulated fireflies
 
@@ -55,44 +55,34 @@ This project delivers both hardware and firmware for turning an addressable LED 
 	</td>
     <td>
         <p align=center>
-            <img src="./assets/Fireflies_hue_RS485_daughter_board_1_0_0_3d_crop.png"  alt="2" width = 250px ></p>
+            <img src="./assets/Fireflies_hue_RS485_daughter_board_1_0_0_3d_crop.png"  alt="2" width = 255px ></p>
     </td>
   </tr> 
 </table>
 
+
 ### The Firmware
 
 *  [Sample code](./code/Firefly_and_rainbow_rpzero_dimmer_brd_2_0_1). Written in Arduino C++. 
-
-* Schedules new fireflies
-
-* Controls rising and falling brightness of each firefly
-
+*  Schedules new fireflies
+*  Controls rising and falling brightness of each firefly
 * Reads the DIP switch and configures for
   * 50, 100, 150, or 200 LED strings
   
   * Any color order (RGB, BGR, etc.)
   
-  * Select alternate color to warm white
-  
-*  Schedules new fir
-* Reads the rotary knob to determine the of color affect to apply
-* Yellow fireflies
-  
-* All hues, slowly shifting.
-  
-* Warm white
-  
-* 85% Orange, 15% Purple (Halloween)
-  
-* 85% Blue, 15% Green
-  
-* 85% Green, 15% Blue
-  
-* 85% Green, 15% Red
-  
-* Blue through Green palette, slowly shifting
-* Turns on the last LED for 2 seconds at startup to verify the string is working
+  * Select alternate color
+*  Reads the rotary knob to determine which one of the eight color affects to apply
+   *  Yellow fireflies
+   *  All hues, slowly shifting.
+   *  Warm white
+   *  85% Orange, 15% Purple (Halloween)
+   *  85% Blue, 15% Green
+   *  85% Green, 15% Blue
+   *  85% Green, 15% Red
+   *  Blue through Green palette, slowly shifting
+   *  Turns on the last LED for 2 seconds at startup to verify the string is working
+
 
 ### How this project started
 
@@ -104,11 +94,11 @@ I got a boost in the Fall of 2023 with a visit from a family member from the US 
 
 Soon after that I decided to change to a faster microcontroller.  And I found much more appropriate LED strings rather than the clunky plastic covered LED strips I had be working with.
 
-That resulted in my first prototype on protoboard.  It used a Pi Pico RP2040 microcontroller board that is still in use outdoors!  The journey continued with a v1 circuit board implementation in a smaller box.  That led to the current V2 version with additional features.   
+That resulted in my first prototype on protoboard.  It used a Pi Pico RP2040 microcontroller board and is still in use outdoors!  The journey continued with a v1 circuit board implementation in a smaller box.  That led to the current V2 version with additional features.   
 
 **[Hardware Revision History with images][./hardware_revision_history.md]**
 
-<p align=center>
+<p align=left>
             <img src="./assets/Fireflies_logo_2_0.png" alt="1" width = 250px></p>
 
 
