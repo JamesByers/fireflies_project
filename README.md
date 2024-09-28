@@ -20,17 +20,27 @@ This project delivers both hardware and firmware for turning an addressable LED 
 
 * New compact implementation fits in a 4 x 2.75 x 2 inch project box
 * Supports 10m of wire 
-* Support up to 100m of wire between the controller and the first LED with optional RS485 daughter board
+* Optional RS485 daughter board supports up to 100m of wire between the controller and the first LED daughter board
 * Incorporates a Waveshare RP2040 Zero microcontroller module
 * Uses a fast surface mount XOR gate to boost to the [5V 800 kHz signal](./assets/800kHz_original_and level shifted_double_1_5.png) required by the LEDs
 * Custom circuit board design with full ground plane and top copper pour.  Utilizes all top side exposed RP2040 Zero pins
+  * [Schematic](Schematic Editor)
   * Kicad PCB design files available
 
-<img src="./assets/Fireflies_hue_2_0_1_board.png" width="400"></img>
+<table>
+  <tr>
+    <td>
+    	<img src="./assets/Fireflies_2_1_0_board_3d.png"  alt="1" width = 400px >
+	</td>
+    <td>
+    	<img src="./assets/Fireflies_hue_v2_1_0_top.png" alt="2" width = 400px >
+    </td>
+  </tr> 
+</table>
 
 ### The Firmware
 
-* Arduino C++
+* Written in Arduino C++
 
 * Reads a DIP switch and configures for
 
