@@ -1,85 +1,76 @@
-# The Fireflies LED  Controller Project
+# The Fireflies LED Controller Project
 
 This project delivers both hardware and firmware for turning an addressable LED string into simulated fireflies
 
 <video src="C:\git\fireflies_project\assets\IMG_0222.MOV"></video>
 
+## What the Fireflies LED Controller can do
+* Turns an LED string into simulated fireflies
+* Select from 8 color effect choices with a turn of a knob
+* Allows you to dim for more realistic fireflies. Or select full brightness to use for holiday lights.
+* Supports two different builds
+  * A simple two knob build for a simple interface
+  * A five knob build that allows you to select any hue, the number of concurrent fireflies, and the percentage mix of colors
+
+* Works with any WS2812 LED string
 
 
 
+### The Hardware
 
-### Background
+* New compact implementation fits in a 4 x 2.75 x 2 inch project box
+* Supports 10m of wire 
+* Support up to 100m of wire between the controller and the first LED with optional RS485 daughter board
+* Incorporates a Waveshare RP2040 Zero microcontroller module
+* Uses a fast surface mount XOR gate to boost to the [5V 800 kHz signal](./assets/800kHz_original_and level shifted_double_1_5.png) required by the LEDs
+* Custom circuit board design with full ground plane and top copper pour.  Utilizes all top side exposed RP2040 Zero pins
+  * Kicad PCB design files available
 
-This project journey started in Fall of 2022 when I was experimenting with controlling led strings using microcontrollers to create outdoor Christmas lights.  A few months later I was reminiscing about seeing "lightning bugs" in summer while I was growing up.  The idea gelled to simulate the fireflies I remember so I could enjoy the effect any time of year.  
+<img src="./assets/Fireflies_hue_2_0_1_board.png" width="400"></img>
 
-My first prototype used a Arduino Nano as the microcontroller.  It was able to support five simultaneous and supported three knobs to adjust RGB values so I could experiment with color choices.
+### The Firmware
 
-I got a boost in the Fall of 2023 with a visit from a family member from the Midwest who has fireflies show up every year in her yard.  That allowed me to tune the color and duration to the fireflies I grew up with.  
+* Arduino C++
 
-Soon after that I decided to change a faster microcontroller RP2020 and found much more appropriate LED strings rather than the clunky plastic covered LED strips I had be working with.
+* Reads a DIP switch and configures for
 
-That resulted in the first prototype using the Pi Pico RP2040 microcontroller that is still in use outdoors!  The journey has continues with an initial v1 and then the current V2 versions with increasing features.
+  * 50, 100, 150, or 200 LED strings
 
-<p align="left"><img src="./assets/Fireflies_v1_box_w_lid.jpg" width="400"></p>
+  * Any color order (RGB, BGR, etc.)
 
-### Hardware Revision History
+  * Alternate color to warm white
 
-#### V2 Hardware (Fireflies Hue)
-<p align="left">
-<img src="./assets/Fireflies_2_0_1_board_photo_crop.png" width="400">
-</p>
+* Reads the rotary knob to determine the of color affect
 
+  * Firefly yellow
 
-V2, also known as Fireflies Hue adds the ability to read addition inputs.  An eight position rotary switch replaces the v1 toggle switch. Three potentiometers are added to control Hue, number of concurrent fireflies, and percent mix of two colors.
+  * All hues, slowly shifting.
 
-**Board v2.1.0**
+  * Warm white
 
-* Upgraded rotary switch support to eight selections instead of seven.
-* Removed jumper used to force default settings, freeing up a pin for the rotary switch.
-* Added a top copper pour to reduce environmental impact of circuit board manufacture.
-* Positioned the small caps much closer to the XOR gate.
-* Changes input and output pads to through hole for better mechanical strength,
+  * 85% Orange, 15% Purple (Halloween)
 
-**Board v2.0.1**
+  * 85% Blue, 15% Green
 
-- Replaced toggle switch with rotary switch.
-- Added support for three additional potentiometers.
-- Added support for a RS485 daughter board to support long distances to the first LED.  Designed to handle distances of up to 100m.
-- Added new custom Firefly Hue logo.
+  * 85% Green, 15% Blue
 
+  * 85% Green, 15% Red
 
-#### V1 Hardware
-<table>
-  <tr>
-    <td>
-    	<img src="./assets/Fireflies_std_v1_0_2.png"  alt="1" width = 400px >
-	</td>
-    <td>
-    	<img src="./assets/Fireflies_v1_box_w_lid.jpg" alt="2" width = 400px >
-    </td>
-  </tr> 
-</table>
+  * Blue through Green palette, slowly shifting
 
-* **Board v1.0.2**
-  * Final V1 board design
-  * Improved the layout for more effective ground plane and power distribution
-* **Board v1.0.1**
-  * Added a ground plane to the PCB.
-  * Added .1uF capacitor for better power management for XOR gate.
-* **Board v1.0.0**
-  * First PCB design (Printed Circuit Board)
-  * Changed to a RP2024 Zero microcontroller from a Pi Pico
-  * Replaced previous level shifter with an high speed XOR gate to shift the high speed signal from 3.3V to 5V.
-  * Added a DIP switch to select between:
-    * RGB Color order to assure the LED controller is compatible with all WS2812 RGB strings.
-    * LED string lengths of 50, 100, 150, and 200 LED strings
-    * Select alternate colors
-  * New compact implementation fits in a common [100X68X50mm project box](https://www.amazon.com/gp/product/B07RTYYHK7).
+### How this project started
 
-#### Pi Pico RP2040 original prototype
+This project started in Fall of 2022 when I was playing around with led strings to create outdoor Christmas lights.  A few months later I was reminiscing about seeing "lightning bugs" every summer while I was growing up.  The idea gelled to simulate the fireflies those fireflies so I could enjoy the effect any time of year.  
 
-It worked!
+My first prototype employed a Arduino Nano as the microcontroller.  It was able to support five simultaneous LEDs.  And I used three knobs for RGB values so I could experiment with color choices.
 
-I learned from the prototype that the 3.3V-5V level shifter was actually *reducing the voltage* of the 800 kHz communication to the LEDs.  Yikes!
+I got a boost in the Fall of 2023 with a visit from a family member from the US Midwest who has fireflies every year in her yard.  That allowed me to tune the color and duration to the fireflies I grew up with.  
 
-![](C:\Users\byerj023\Downloads\Fireflies_pi_pico_prototype.jpg)
+Soon after that I decided to change to a faster microcontroller.  And I found much more appropriate LED strings rather than the clunky plastic covered LED strips I had be working with.
+
+That resulted in my first prototype on protoboard.  It used a Pi Pico RP2040 microcontroller board that is still in use outdoors!  The journey continued with a v1 circuit board implementation in a smaller box.  That led to the current V2 version with additional features.   
+
+## Going deeper
+
+[Hardware Revision History with images][./hardware_revision_history.md]
+
