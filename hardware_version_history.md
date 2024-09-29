@@ -57,7 +57,7 @@ This page provides information about each revision of the V1 (original) and V2 (
 
 ### Pi Pico RP2040 original prototype
 
-It worked!
+It worked! But barely.
 
 I learned from the prototype that the 3.3V-5V level shifter was actually *reducing the voltage* of the 800 kHz communication to the LEDs.  Yikes!
 
