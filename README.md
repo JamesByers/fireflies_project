@@ -16,8 +16,6 @@ Click image for video
   * A two knob build for a simple interface and easier build
   * A five knob build that allows you to select any hue, the number of concurrent fireflies, and the percentage mix of colors
 
-* Works with any WS2812 LED string
-
 ### User guides
 
 * [V1 Fireflies LED Controllers](https://github.com/JamesByers/fireflies_led_controllers/blob/main/README.md)
@@ -86,6 +84,7 @@ Click image for video
    6.  85% Green, 15% Blue
    7.  85% Green, 15% Red
    8.  Blue through Green palette, slowly shifting
+* Works with any WS2812 LED string
 
 ### How this project started
 This project started in Fall of 2022 when I was playing around with led strings to create outdoor Christmas lights.  A few months later I was reminiscing about seeing "lightning bugs" every summer while I was growing up.  The idea gelled to simulate the fireflies those fireflies so I could enjoy the effect any time of year.  
