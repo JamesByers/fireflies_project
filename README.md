@@ -20,7 +20,7 @@ Click image for video
 
 ### User guides
 
-* [V1 Fireflies LED Controllers](https://github.com/JamesByers/fireflies_led_controllers)
+* [V1 Fireflies LED Controllers]([https://github.com/JamesByers/fireflies_led_controllers](https://github.com/JamesByers/fireflies_led_controllers/blob/main/README.md))
 * V2 Fireflies Hue (guide under development)
 
 <p align="left"><img src="./assets/Fireflies_2_0_1_board_photo.png" height=400 ></img></p>
