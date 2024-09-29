@@ -27,11 +27,11 @@ Click image for video
 
 ### The Hardware
 
-* New compact implementation fits in a 4 x 2.75 x 2 inch project box
-* Optional RS485 daughter board supports up to 50m of wire between the controller and the first LED daughter board.  10m of wire is supported without the daughter board
-* Incorporates a Waveshare RP2040 Zero microcontroller module
-* Uses a fast surface mount XOR gate to boost to the [5V 800 kHz signal](./assets/800kHz_original_and level shifted_double_1_5.png) required by the LEDs
-* Custom circuit board design with full ground plane and top copper pour.  Utilizes all top side exposed RP2040 Zero pins
+* Compact implementation fits in a 4 x 2.75 x 2 inch project box.
+* Optional RS485 daughter board supports up to 50m of wire between the controller and the first LED. 10m of wire is supported with no daughter board.
+* Incorporates a Waveshare RP2040 Zero microcontroller.
+* Uses a fast surface mount XOR gate to level shift to the [5V 800 kHz signal](./assets/800kHz_original_and level shifted_double_1_5.png) required by the LEDs.
+* Custom circuit board design with full ground plane and top copper pour.  Utilizes all top side exposed RP2040 Zero pins.
   * [Schematic](./assets/Fireflies_2_0_1_schematic.pdf) (PDF)
   * Kicad PCB design files available
   * 56mm x 66mm
@@ -75,11 +75,9 @@ Click image for video
 *  Turns on the last LED for 2 seconds at startup to verify the string is working
 * Reads the DIP switch and configures for
   * 50, 100, 150, or 200 LED strings
-  
   * Any color order (RGB, BGR, etc.)
-  
   * Select alternate color
-*  Reads the rotary knob to determine which one of the eight color affects to apply
+* Reads the rotary knob to determine which one of the eight color affects to apply
    1.  Yellow fireflies
    2.  All hues, slowly shifting.
    3.  Warm white
