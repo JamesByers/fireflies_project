@@ -10,7 +10,7 @@ Click image for video
 
 ## What the Fireflies LED Controller can do
 * Turns an LED string into simulated fireflies
-* Select from 8 color effects with a turn of a knob
+* Selects between eight color effects with a turn of a knob
 * Allows you to dim for realistic fireflies. Or select full brightness to use for holiday lights.
 * Supports two different builds from same circuit board
   * A two knob build for a simple interface and easier build
