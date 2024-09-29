@@ -69,7 +69,7 @@ Click image for video
 
 ### The Firmware
 
-*  [Sample code](./code/Firefly_and_rainbow_rpzero_dimmer_brd_2_0_1/Firefly_and_rainbow_rpzero_dimmer_brd_2_0_1.ino). Written in Arduino C++. 
+*  [Sample code](./code/Firefly_and_rainbow_rpzero_dimmer_brd_2_0_1/Firefly_and_rainbow_rpzero_dimmer_brd_2_0_1.ino). Written in Arduino C++
 *  Schedules new fireflies
 *  Controls rising and falling brightness of each firefly
 *  Turns on the last LED for 2 seconds at startup to verify the string is working
@@ -87,9 +87,7 @@ Click image for video
    7.  85% Green, 15% Red
    8.  Blue through Green palette, slowly shifting
 
-
 ### How this project started
-
 This project started in Fall of 2022 when I was playing around with led strings to create outdoor Christmas lights.  A few months later I was reminiscing about seeing "lightning bugs" every summer while I was growing up.  The idea gelled to simulate the fireflies those fireflies so I could enjoy the effect any time of year.  
 
 My first prototype employed a Arduino Nano as the microcontroller.  It was able to support five simultaneous LEDs.  And I used three knobs for RGB values so I could experiment with color choices.
@@ -98,7 +96,7 @@ I got a boost in the Fall of 2023 with a visit from a family member from the US 
 
 Soon after that I decided to change to a faster microcontroller.  And I found much more appropriate LED strings rather than the clunky plastic covered LED strips I had be working with.
 
-That resulted in my first prototype on protoboard.  It used a Pi Pico RP2040 microcontroller board and is still in use outdoors!  The journey continued with a v1 circuit board implementation in a smaller box.  That led to the current V2 version with additional features.   
+That resulted in my first prototype on protoboard.  It used a Pi Pico RP2040 microcontroller board and is still doing its thing everyday outdoors!  The journey continued with a v1 printed circuit board implementation in the smaller box.  That led to the current V2 version with additional features.   
 
 **[Hardware Revision History with images](hardware_version_history.md)**
 
