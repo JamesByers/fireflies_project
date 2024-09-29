@@ -34,7 +34,7 @@ Click image for video
 * Custom circuit board design with full ground plane and top copper pour.  Utilizes all top RP2040 Zero pins
   * [Schematic](./assets/Fireflies_2_0_1_schematic.pdf) (PDF)
   * Kicad PCB design files available
-  * PCB dimensions: 56mm x 66mm
+  * PCB dimensions: 56mm x 66mm (2.2x2.6 inch)
 
 <table>
   <tr>
