@@ -19,7 +19,7 @@ Click image for video
 * [V1 Fireflies LED Controllers](https://github.com/JamesByers/fireflies_led_controllers/blob/main/README.md)
 * V2 Fireflies Hue (guide under development)
 
-<p align="left"><img src="./assets/Fireflies_2_0_1_board_photo.png" height=400 ></img></p>
+<p align="left"><img src="./assets/Fireflies_Hue_v2_0_0_with_parts.png" height=400 ></img></p>
 
 ### The Hardware
 
