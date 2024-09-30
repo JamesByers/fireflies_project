@@ -31,10 +31,10 @@ Click image for video
 * Uses a fast surface mount XOR gate to level shift to the [800kHz signal](./assets/800kHz_original_and_level_shifted_double_1_5.png) to the 5V required by the LEDs
 * Custom circuit board design with full ground plane and top copper pour.  Utilizes all top RP2040 Zero pins
   * [Schematic](./assets/Fireflies_2_0_1_schematic.pdf) (PDF)
-  * Kicad PCB design files available
+  * Designed in Kicad.  [Gerber fabrication files](./hardware_files/Gerber/)
   * PCB dimensions: 56mm x 66mm (2.2 x 2.6 inch)
 
-<table>
+<table>files
   <tr>
     <td>
     	<p align=center>
