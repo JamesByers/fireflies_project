@@ -93,7 +93,7 @@ I got a boost in the Fall of 2023 with a visit from a family member from the US 
 
 Soon after that I decided to change to a faster microcontroller.  And I found much more appropriate LED strings rather than the clunky plastic covered LED strips I had be working with.
 
-That resulted in my first prototype on protoboard.  It used a Pi Pico RP2040 microcontroller board and is still doing its thing everyday outdoors!  The journey continued with a v1 printed circuit board implementation in the smaller box.  That led to the current V2 version with additional features.   
+That resulted in my first prototype.  It used a Pi Pico RP2040 microcontroller board and is still doing its thing everyday outdoors!  The journey continued with a v1 printed circuit board implementation in the smaller box.  That led to the current V2 version with additional features.   
 
 **[Hardware Revision History with images](hardware_version_history.md)**
 
