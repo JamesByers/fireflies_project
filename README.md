@@ -4,8 +4,11 @@ This project delivers both hardware and firmware for turning an addressable LED 
 
 Click image for video
 
-[<img src="./assets/20240608_155041.jpg">](https://photos.app.goo.gl/UaPuwaba9bqjVWHB6)
+<video
 
+[<img src="./assets/20240608_155041.jpg">](https://photos.app.goo.gl/UaPuwaba9bqjVWHB6
+
+https://github.com/user-attachments/assets/d49043d1-0e86-4630-980a-786853d1840d
 
 
 ## What the Fireflies LED Controller can do
