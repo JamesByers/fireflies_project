@@ -17,7 +17,7 @@ This page provides information about each revision of the V1 (original) and V2 (
 * Added a top copper pour to reduce environmental impact of circuit board manufacture.
 * Added support for 5k1 Ohm resistors on board for quicker build for forcing 3A USB-C current level.
 * Positioned the small caps much closer to the XOR gate.
-* Changes input and output pads to through hole for better mechanical strength,
+* Changed input and output pads to through hole for better mechanical strength,
 
 **Board v2.0.1**
 
