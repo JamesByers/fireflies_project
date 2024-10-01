@@ -29,7 +29,8 @@ Click image for video
 * Incorporates a Waveshare RP2040 Zero microcontroller
 * Custom circuit board design with full ground plane and top copper pour.  Utilizes all top RP2040 Zero pins
   * [Schematic](./assets/Fireflies_2_0_1_schematic.pdf) (PDF)
-  * Designed in Kicad. Gerber PCB fabrication files are available [here](./hardware_files/Gerber/).
+  * PCB designed in Kicad
+    * Gerber PCB fabrication files are available [here](./hardware_files/Gerber/).
   * PCB dimensions: 56mm x 66mm (2.2 x 2.6 inch)
 
 <table>files
