@@ -1,9 +1,9 @@
 # <img src="./assets/Fireflies_logo_2_0.png" height = 64px > The Fireflies Project - Hardware Revision History
-This page provides information about each revision of the V1 (original) and V2 (FIreflies Hue) hardware implementations.
+This page provides information about each revision of the V1 (original) and V2 (Fireflies Hue) hardware implementations.
 
 ### V2 Hardware (Fireflies Hue)
 
-**V2**, also known as Fireflies Hue adds the ability to read addition inputs.  An eight position rotary switch replaces the v1 toggle switch. Three potentiometers are added to control Hue, number of concurrent fireflies, and percent mix of two colors.
+**V2**, also known as Fireflies Hue adds the ability to read addition inputs.  An eight position rotary switch replaces the v1 toggle switch. Three potentiometers are added to control hue, number of concurrent fireflies, and percent mix of two colors.
 
 <p align="left">
 <img src="./assets/Fireflies_2_0_1_board_photo_crop.png" width="400">
