@@ -25,9 +25,9 @@ Click image for video
 
 * Compact implementation fits in a 4 x 2.75 x 2 inch project box
 * Optional RS485 daughter board supports up to 50m of wire between the controller and the first LED. 10m of wire is supported with no daughter board
-* Uses a fast surface mount XOR gate to level shift to the 3.3V [800kHz signal](./assets/800kHz_original_and_level_shifted_double_1_5.png) to the 5V required by the LEDs
-* Utilizes a Waveshare RP2040 Zero microcontroller
-* Custom circuit board design with full ground plane and top copper pour.  Utilizes all top RP2040 Zero pins
+* Uses a surface mount XOR gate to level shift the 3.3V [800kHz signal](./assets/800kHz_original_and_level_shifted_double_1_5.png) to the 5V required by the LEDs
+* Uses a Waveshare RP2040 Zero for the microcontroller
+* Custom circuit board design with full ground plane and top ncopper pour.  Utilizes all top RP2040 Zero pins
   * [Schematic](./assets/Fireflies_2_0_1_schematic.pdf) (PDF)
   * PCB designed in Kicad
     * Gerber PCB fabrication files are available [here](./hardware_files/Gerber/).
