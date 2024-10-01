@@ -19,7 +19,11 @@ This page provides information about each revision of the V1 (original) and V2 (
 * Positioned the small caps much closer to the XOR gate.
 * Changed input and output pads to through hole for better mechanical strength,
 
-**Board v2.0.1**
+<p align="left">
+<img src="./assets/Fireflies_Hue_v2_0_0_with_parts.png")
+</p>
+
+**Board v2.0.0**
 
 - Replaced toggle switch with rotary switch.
 - Added support for three additional potentiometers.
