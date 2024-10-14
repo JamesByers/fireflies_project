@@ -30,8 +30,8 @@ Click image for video
   * PCB designed in Kicad
     * PCB dimensions: 56mm x 66mm (2.2 x 2.6 inch)
     * Gerber PCB fabrication files are available [here](./hardware_files/Gerber/).
-   
 * Uses all top side pins of an Waveshare RP2040 Zero microcontroller
+* **[Hardware Revision History with images](hardware_version_history.md)**
 
 <table>files
   <tr>
@@ -95,8 +95,6 @@ I got a boost in the Fall of 2023 with a visit from a family member from the US 
 Soon after that I decided to change to a faster microcontroller.  And I found much more appropriate LED strings rather than the clunky plastic covered LED strips I had be working with.
 
 That resulted in my first prototype.  It used a Pi Pico RP2040 microcontroller board and is still doing its thing everyday outdoors!  The journey continued with a v1 printed circuit board implementation in the smaller box.  That led to the current V2 version with additional features.   
-
-**[Hardware Revision History with images](hardware_version_history.md)**
 
 <p align=left>
             <img src="./assets/Fireflies_logo_2_0.png" alt="1" width = 250px></p>
