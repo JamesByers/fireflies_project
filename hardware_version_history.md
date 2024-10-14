@@ -20,17 +20,13 @@ This page provides information about each revision of the V1 (original) and V2 (
 * Positioned the small caps much closer to the XOR gate.
 * Changed input and output pads to through hole for better mechanical strength
 
-<p align="left">
-<img src="./assets/Fireflies_hue_v2_1_0_top.png" width=400px)
-</p>
-
 <table>
   <tr>
     <td>
     	<img src="./assets/Fireflies_hue_v2_1_0_top.png"  alt="1" width = 400px >
 	</td>
     <td>
-    	<img src="./assets/Fireflies_hue_v2_1_0_3d_top" alt="2" width = 400px >
+    	<img src="./assets/Fireflies_hue_v2_1_0_3d_top.png" alt="2" width = 400px >
     </td>
   </tr> 
 </table>
