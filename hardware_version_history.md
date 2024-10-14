@@ -9,9 +9,14 @@ This page provides information about each revision of the V1 (original) and V2 (
 <img src="./assets/Fireflies_2_1_0_board_3d.png")
 </p>
 
-
+**Board v2.1.1**
+* Improved routing to the 8 position rotary switch.  All traces now on top side
+* 
+<p align="left">
+<img src="./assets/Fireflies_hue_2_1_1_3d.png")
+</p>
+	
 **Board v2.1.0**
-
 * Upgraded rotary switch support to eight selections instead of seven.
 * Removed jumper used to force default settings, freeing up a pin for the rotary switch.
 * Added a top copper pour to reduce environmental impact of circuit board manufacture.
@@ -24,7 +29,6 @@ This page provides information about each revision of the V1 (original) and V2 (
 </p>
 
 **Board v2.0.0**
-
 - Replaced toggle switch with rotary switch.
 - Added support for three additional potentiometers.
 - Added support for a RS485 daughter board to support long distances to the first LED.  Designed to handle distances of up to 100m.
