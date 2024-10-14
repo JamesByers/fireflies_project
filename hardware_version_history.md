@@ -4,7 +4,6 @@ This page provides information about each revision of the V1 (original) and V2 (
 ### V2 Hardware (Fireflies Hue)
 
 **V2**, also known as Fireflies Hue adds the ability to read addition inputs.  An eight position rotary switch replaces the v1 toggle switch. Three potentiometers are added to control hue, number of concurrent fireflies, and percent mix of two colors.
-
 <p align="left">
 <img src="./assets/Fireflies_hue_v2_1_1_3d.png" width=400px)
 </p>	
@@ -14,6 +13,7 @@ This page provides information about each revision of the V1 (original) and V2 (
 <p align="left">
 <img src="./assets/Fireflies_hue_v2_1_0_3d.png" width=400px)
 </p>	
+	
 **Board v2.1.0**
 * Upgraded rotary switch support to eight selections instead of seven.
 * Removed jumper used to force default settings, freeing up a pin for the rotary switch.
@@ -25,13 +25,12 @@ This page provides information about each revision of the V1 (original) and V2 (
 <p align="left">
 <img src="./assets/Fireflies_Hue_v2_0_0_with_parts.png" width = 400)
 </p>
+	
 **Board v2.0.0**
 - Replaced toggle switch with rotary switch.
 - Added support for three additional potentiometers.
 - Added support for a RS485 daughter board to support long distances to the first LED.  Designed to handle distances of up to 100m.
 - Added new custom Firefly Hue logo.
-
-
 
 ### V1 Hardware - The original Fireflies LED Controller!
 <table>
