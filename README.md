@@ -12,12 +12,11 @@ Click image for video
 * Allows you to dim for realistic fireflies. Or select full brightness to use for holiday lights.
 * Supports two different builds from same circuit board
   * A two knob build for a simple interface and easier build
-  * A five knob build that allows you to select any hue, the number of concurrent fireflies, and the percentage mix of colors
+  * A five knob build that allows you to select any hue, the number of concurrent fireflies, iand the percentage mix of colors
 
 ### User guides
 
-* [V1 Fireflies LED Controllers](https://github.com/JamesByers/fireflies_led_controllers/blob/main/README.md)
-* V2 Fireflies Hue (guide under development)
+* [Fireflies LED Controllers](https://github.com/JamesByers/fireflies_led_controllers/blob/main/README.md)
 
 <p align="left"><img src="./assets/Fireflies_Hue_v2_0_0_with_parts.png" height=400 ></img></p>
 
@@ -26,12 +25,13 @@ Click image for video
 * Compact implementation fits in a 4 x 2.75 x 2 inch project box
 * Optional RS485 daughter board supports up to 50m of wire between the controller and the first LED. 10m of wire is supported with no daughter board
 * Uses a surface mount XOR gate to level shift the 3.3V [800kHz signal](./assets/800kHz_original_and_level_shifted_double_1_5.png) to the 5V required by the LEDs
-* Uses all top side pins of an Waveshare RP2040 Zero microcontroller
-* Utilizes a custom circuit board design with full ground plane and top copper pour.
+* Implements a custom circuit board design with full ground plane and top copper pour
   * [Schematic](./assets/Fireflies_2_0_1_schematic.pdf) (PDF)
   * PCB designed in Kicad
     * PCB dimensions: 56mm x 66mm (2.2 x 2.6 inch)
     * Gerber PCB fabrication files are available [here](./hardware_files/Gerber/).
+* Uses all top side pins of an Waveshare RP2040 Zero microcontroller
+* [Hardware Revision History with images](hardware_version_history.md)
 
 <table>files
   <tr>
@@ -95,8 +95,6 @@ I got a boost in the Fall of 2023 with a visit from a family member from the US 
 Soon after that I decided to change to a faster microcontroller.  And I found much more appropriate LED strings rather than the clunky plastic covered LED strips I had be working with.
 
 That resulted in my first prototype.  It used a Pi Pico RP2040 microcontroller board and is still doing its thing everyday outdoors!  The journey continued with a v1 printed circuit board implementation in the smaller box.  That led to the current V2 version with additional features.   
-
-**[Hardware Revision History with images](hardware_version_history.md)**
 
 <p align=left>
             <img src="./assets/Fireflies_logo_2_0.png" alt="1" width = 250px></p>
