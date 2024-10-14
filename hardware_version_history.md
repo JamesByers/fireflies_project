@@ -8,7 +8,7 @@ This page provides information about each revision of the V1 (original) and V2 (
 **Board v2.1.1**
 * Improved routing to the 8 position rotary switch.  All traces now on top side
 <p align="left">
-<img src="./assets/Fireflies_hue_2_1_1_3d.png" width=400px)
+<img src="./assets/Fireflies_hue_v2_1_1_3d.png" width=400px)
 </p>
 	
 **Board v2.1.0**
