@@ -7,6 +7,7 @@ This page provides information about each revision of the V1 (original) and V2 (
 
 **Board v2.1.1**
 * Improved the routing to the 8 position rotary switch.  All traces now on top copper
+
 <p align="left">
 <img src="./assets/Fireflies_hue_v2_1_1_3d.png" width=400px)
 </p>
@@ -17,18 +18,29 @@ This page provides information about each revision of the V1 (original) and V2 (
 * Added a top copper pour to reduce environmental impact of circuit board manufacture.
 * Added support for 5k1 Ohm resistors on board for quicker build for forcing 3A USB-C current level.
 * Positioned the small caps much closer to the XOR gate.
-* Changed input and output pads to through hole for better mechanical strength,
+* Changed input and output pads to through hole for better mechanical strength
 
-<p align="left">
-<img src="./assets/Fireflies_Hue_v2_0_0_with_parts.png" width = 400)
-</p>
+<table>
+  <tr>
+    <td>
+    	<img src="./assets/Fireflies_hue_v2_1_0_top.png"  alt="1" width = 400px >
+	</td>
+    <td>
+    	<img src="./assets/Fireflies_hue_v2_1_0_3d_top.png" alt="2" width = 400px >
+    </td>
+  </tr> 
+</table>
 
+	
 **Board v2.0.0**
 - Replaced toggle switch with rotary switch.
 - Added support for three additional potentiometers.
 - Added support for a RS485 daughter board to support long distances to the first LED.  Designed to handle distances of up to 100m.
 - Added new custom Firefly Hue logo.
 
+<p align="left">
+<img src="./assets/Fireflies_Hue_v2_0_0_with_parts.png" width = 400)
+</p>
 
 ### V1 Hardware - The original Fireflies LED Controller!
 <table>
