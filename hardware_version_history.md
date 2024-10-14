@@ -26,7 +26,7 @@ This page provides information about each revision of the V1 (original) and V2 (
     	<img src="./assets/Fireflies_hue_v2_1_0_top.png"  alt="1" width = 400px >
 	</td>
     <td>
-    	<img src="./assets/Fireflies_hue_v2_1_0_top.png" alt="2" width = 400px >
+    	<img src="./assets/Fireflies_hue_v2_1_0_3d_top.png" alt="2" width = 400px >
     </td>
   </tr> 
 </table>
