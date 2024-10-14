@@ -31,7 +31,7 @@ Click image for video
     * PCB dimensions: 56mm x 66mm (2.2 x 2.6 inch)
     * Gerber PCB fabrication files are available [here](./hardware_files/Gerber/).
 * Uses all top side pins of an Waveshare RP2040 Zero microcontroller
-* **[Hardware Revision History with images](hardware_version_history.md)**
+* [Hardware Revision History with images](hardware_version_history.md)
 
 <table>files
   <tr>
