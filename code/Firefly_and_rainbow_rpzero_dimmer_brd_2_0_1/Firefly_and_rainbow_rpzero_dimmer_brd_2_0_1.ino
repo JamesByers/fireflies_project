@@ -81,7 +81,7 @@ byte rotaryByte;
 
 
 // Create Matrix to hold the LED # of the up to 3 LEDs that can be lit
-// at any particular time and the step in the rise/fall sequence of the LED intensit
+// at any particular time and the step in the rise/fall sequence of the LED intensity
 // Rows correspond to an LED to turn on
 // Columns are:
 //   0) LED to be lit in the string
@@ -98,7 +98,7 @@ void setup() {
   //Wire.setSDA(4);   // Only needed if you want to use the Arduino logical pins to set SDA pin
   //Wire.setSCL(5);   // Only needed if you want to use the Arduino logical pins to set SDA pin
   delay(2000);
-  Serial.println("This sketch is Firefly_and_rainbow_rpzero_dimmer_brd_1_0_1, version 20240725a");
+  Serial.println("This sketch is Firefly_and_rainbow_rpzero_dimmer_brd_2_0_1, version 20241010");
   hsv = CHSV (0, 255, 255);
   //pinMode(toggle_switch_pin, INPUT_PULLUP);
   pinMode(jumper_pin, INPUT_PULLUP);
