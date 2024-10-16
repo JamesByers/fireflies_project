@@ -33,7 +33,7 @@ Click image for video
 * Uses all top side pins of an Waveshare RP2040 Zero microcontroller
 * [Hardware Revision History with images](hardware_version_history.md)
 
-<table>files
+<table>
   <tr>
     <td>
     	<p align=center>
