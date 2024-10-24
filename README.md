@@ -82,7 +82,7 @@ Click image for video
    5.  85% Blue, 15% Green
    6.  85% Green, 15% Blue
    7.  85% Green, 15% Red
-   8.  Blue through Green palette, slowly shifting
+   8.  Displays teh hue selected using what normally is the dimmer knob
 * Works with any WS2812 LED string
 
 ### How this project started
