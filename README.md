@@ -37,7 +37,7 @@ Click image for video
   <tr>
     <td>
     	<p align=center>
-            <img src="./assets/Fireflies_hue_v2_1_0_top.png" alt="1" width = 400px ></p>
+            <img src="./assets/Fireflies_hue_2_2_0_pcb_design.png" alt="1" width = 400px ></p>
 	</td>
     <td>
         <p align=center>
