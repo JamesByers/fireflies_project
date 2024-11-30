@@ -41,7 +41,7 @@ Click image for video
 	</td>
     <td>
         <p align=center>
-            <img src="./assets/Fireflies_2_1_0_board_3d.png"  alt="2" width = 400px ></p>
+            <img src="./assets/Fireflies_hue_2_2_0s.png"  alt="2" width = 400px ></p>
     </td>
   </tr> 
 </table>
