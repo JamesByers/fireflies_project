@@ -7,7 +7,7 @@ This page provides information about each revision of the V1 (original) and V2 (
 
 **Board v2.2.0**
 * Moved the polyfuse onto the board
-* Changed C2 from 25V to 16V
+* Changed the C2 capacitor from 25V to 16V
 
 **Board v2.1.1**
 * Improved the routing to the 8 position rotary switch.  All traces now on top copper
