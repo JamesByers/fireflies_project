@@ -72,7 +72,7 @@ This page provides information about each revision of the V1 (original) and V2 (
   * Added a ground plane to the PCB.
   * Added .1uF capacitor for better power management for XOR gate.
 * **Board v1.0.0**
-  * Printed circuit board implementation fits in a common [100X68X50mm project box](https://www.amazon.com/gp/product/B07RTYYHK7).
+  * Printed circuit board implementation fits in a readily [100X68X50mm project box](https://www.amazon.com/gp/product/B07RTYYHK7).
   * First PCB design (Printed Circuit Board)
   * Changed to a RP2024 Zero microcontroller from a Pi Pico
   * Replaced previous level shifter with an high speed XOR gate to shift the high speed signal from 3.3V to 5V.
