@@ -73,7 +73,7 @@ Click image for video
 * Reads the DIP switch and configures for
   * 50, 100, 150, or 200 LED strings
   * Any color order (RGB, BGR, etc.)
-  * Select alternate color
+  * Selecting alternate color to the warm white
 * Reads the rotary knob to determine which one of the eight color affects to apply
    1.  Yellow fireflies
    2.  All hues, slowly shifting.
