@@ -85,7 +85,7 @@ This page provides information about each revision of the V1 (original) and V2 (
 
 It worked! But barely.
 
-I learned from the prototype that the 3.3V-5V level shifter I was using actually *reduced* the voltage* of the 800 kHz communication to the LEDs.  Yikes!
+I learned from the prototype that the 3.3V-5V level shifter I was using actually *reduced* the voltage of the 800 kHz communication to the LEDs.  Yikes!
 
 ![](./assets/Fireflies_pi_pico_prototype.jpg)
 
