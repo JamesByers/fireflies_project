@@ -69,7 +69,7 @@ Click image for video
 *  [Sample code](./code/Firefly_and_rainbow_rpzero_dimmer_brd_2_0_1/Firefly_and_rainbow_rpzero_dimmer_brd_2_0_1.ino). Written in Arduino C++
 *  Schedules new fireflies
 *  Controls rising and falling brightness of each firefly
-*  Turns on the last LED for 2 seconds at startup to verify the string is working
+*  Turns on the last LED for 4 seconds at startup to verify the string is working
 * Reads the DIP switch and configures for
   * 50, 100, 150, or 200 LED strings
   * Any color order (RGB, BGR, etc.)
