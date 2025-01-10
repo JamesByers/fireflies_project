@@ -1,6 +1,6 @@
 # <img src="./assets/Fireflies_logo_2_0.png" height = 64px > The Fireflies LED Controller Project
 
-This project delivers both hardware and firmware for turning an addressable LED string into simulated fireflies
+This Byers Built project delivers both hardware and firmware for turning an addressable LED string into simulated fireflies
 
 Click image for video
 [<img src="./assets/20240608_155041.jpg">](https://photos.app.goo.gl/UaPuwaba9bqjVWHB6)
