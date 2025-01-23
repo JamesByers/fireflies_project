@@ -1,6 +1,5 @@
 #include <Arduino.h>
 #include <Wire.h>
-//#include <SPI.h>
 #include "Adafruit_NeoPixel.h"
 #include <FastLED.h>
 
@@ -113,7 +112,7 @@ byte rotary_pin_array[] = {rotary_pin_6,rotary_pin_5,rotary_pin_4,rotary_pin_3,r
 byte rotary_byte; 
 
 
-// Create Matrix to hold the LED # of the up to 3 LEDs that can be lit
+// Create Matrix to hold the information of the fireflies (LEDs) to be lit
 // at any particular time and the step in the rise/fall sequence of the LED intensit
 // Rows correspond to an LED to turn on
 // Columns are:
