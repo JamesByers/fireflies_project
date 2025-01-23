@@ -66,7 +66,7 @@ Click image for video
 
 ### The Firmware
 
-*  [Sample code](.code/Firefly_and_rainbow_rpzero_dimmer_brd_2_0_1/Firefly_and_rainbow_rpzero_dimmer_brd_2_2_x). Written in Arduino C++
+*  [Sample code](./code/Firefly_and_rainbow_rpzero_dimmer_brd_2_0_1/Firefly_and_rainbow_rpzero_dimmer_brd_2_2_x). Written in Arduino C++
 *  Schedules new fireflies
 *  Controls rising and falling brightness of each firefly
 *  Turns on the last LED for 4 seconds at startup to verify the string is working
