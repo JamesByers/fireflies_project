@@ -1,0 +1,598 @@
+#include <Arduino.h>
+#include <Wire.h>
+//#include <SPI.h>
+#include "Adafruit_NeoPixel.h"
+#include <FastLED.h>
+
+/************************************************************************************************************
+/  Setting the following variables will define the lighting behavior of the fireflies
+/************************************************************************************************************/
+
+uint16_t LED_COUNT = 100;//300//97  // Set this to the number of LEDs in the string
+const int MAX_LEDS = 500;
+//Set the number of lit fireflies possible at once.  This will be the number of rows in the matrix.
+const uint16_t init_num_matrix_rows = 150;  // The number rows in the matrix (# of led slots)
+uint16_t num_matrix_rows = 25;
+unsigned int hue_inc = 3;
+unsigned int modulo = 1; //floor(init_num_matrix_rows/7);
+int old_hue = 37;
+
+//Set led intensity rise and fall settings
+int num_loops_in_rise = 50;  // Number of loops for both rise and fall.  50 recommended
+float rise_exponent = 2.0; // Controls how fast of a curve the light increases in intensity. 2.0 recommended
+int fall_exponent = 5; // Controls how fast of a curve the light increases in intensity. 5 recommended.  
+int num_loops_at_max = 25;  // 25 recommended. the number of loops with LED fully on.
+int delay_added_to_each_cycle = 11; // Controls the length of time to execute each loop. with 150 led string and 30 fireflies: 8 recommended for Pi Pico, 11 for Arduino Nano
+/**********************************************************************************************************
+/    End of user settings
+/**********************************************************************************************************/
+
+// Create variables
+// The variables and values below are not user settings
+// Just declaring some variables here.
+#define LED_PIN 14 // Set this to the Arduino digital output pin you will use.  !3 for 2.1.0.  14 for 2.2.0
+unsigned int toggle_switch_pin = 8;
+unsigned int jumper_pin = 15;
+#define debounce 20 // debounce period in milli seconds
+
+long loop_count = 0;
+int lit_led = 0;
+bool move_firefly_flag = true;
+bool current_toggle_status = LOW;
+unsigned long start_time;
+unsigned long loop_time;
+unsigned int hue = 142;
+float dim_val = 1.0;
+CRGB rgb(255,255,0);
+CHSV hsv;
+CRGB leds[MAX_LEDS];
+unsigned int firefly_spawn_count = 0;
+bool jumper_val = 1;
+
+int dimmer_pin = 26;
+int num_ff_pin = 27;
+int hue_pin = 26;
+String config_type = "2.1.0_basic";  // Sets pin assignments for different board versions
+
+byte dip_pin_1 = 0;
+byte dip_pin_2 = 1;
+byte dip_pin_3 = 2;
+byte dip_pin_4 = 3;
+byte dip_pin_5 = 4;
+byte dip_pin_6 = 5;
+byte dip_pin_7 = 6;
+byte dip_pin_8 = 7;
+byte pin_array[] = {dip_pin_8,dip_pin_7,dip_pin_6,dip_pin_5,dip_pin_4,dip_pin_3,dip_pin_2,dip_pin_1};
+
+byte order_byte;
+byte num_led_byte;
+byte white_byte;
+byte color_byte;
+byte routine_byte;
+
+//For v2.2.0
+byte rotary_pin_0 = 15;
+byte rotary_pin_1 = 8;
+byte rotary_pin_2 = 9;
+byte rotary_pin_3 = 10;
+byte rotary_pin_4 = 11;
+byte rotary_pin_5 = 12;
+byte rotary_pin_6 = 13;
+
+//For v2.1.0
+/*
+byte rotary_pin_0 = 15;
+byte rotary_pin_1 = 8;
+byte rotary_pin_2 = 9;
+byte rotary_pin_3 = 10;
+byte rotary_pin_4 = 11;
+byte rotary_pin_5 = 12;
+byte rotary_pin_6 = 14;
+*/
+
+/*
+byte rotary_pin_0 = 14;
+byte rotary_pin_1 = 12;
+byte rotary_pin_2 = 11;
+byte rotary_pin_3 = 10;
+byte rotary_pin_4 = 9;
+byte rotary_pin_5 = 8;
+byte rotary_pin_6 = 15;
+*/
+
+/* For v2.0.1x
+byte rotary_pin_0 = 12;
+byte rotary_pin_1 = 11;
+byte rotary_pin_2 = 10;
+byte rotary_pin_3 = 9;
+byte rotary_pin_4 = 8;
+byte rotary_pin_5 = 14; 
+*/
+
+byte rotary_pin_array[] = {rotary_pin_6,rotary_pin_5,rotary_pin_4,rotary_pin_3,rotary_pin_2,rotary_pin_1,rotary_pin_0};
+byte rotary_byte; 
+
+
+// Create Matrix to hold the LED # of the up to 3 LEDs that can be lit
+// at any particular time and the step in the rise/fall sequence of the LED intensit
+// Rows correspond to an LED to turn on
+// Columns are:
+//   0) LED to be lit in the string
+//   1) Illumination step LED is in
+//   2) Counter of state when between rise and fall
+//   3) loop counter, wraps around back to 0
+long lit_Matrix[init_num_matrix_rows][7] { }; // Create and populate the matrix for lit fireflies.  A little wasteful since creates an oversize matrix rather than dynamic.  But simple.
+uint16_t all_on_leds[MAX_LEDS];
+unsigned short int rgb_permutations[] = {NEO_RGB, NEO_RBG, NEO_GRB, NEO_GBR, NEO_BRG, NEO_BGR};
+uint16_t numberLeds[] = {50, 100, 150, 200};
+Adafruit_NeoPixel strip  = Adafruit_NeoPixel(LED_COUNT, LED_PIN, rgb_permutations[2] + NEO_KHZ800);
+
+void setup() {
+  Serial.begin(9600); // Initialize ability to print to serial monitor
+  delay(3000);
+  Serial.println("This sketch is Firefly_and_rainbow_rpzero_dimmer_brd_2.1.x, version 20241116");
+  hsv = CHSV (0, 255, 255);
+
+  pinMode(dip_pin_1, INPUT_PULLUP);
+  pinMode(dip_pin_2, INPUT_PULLUP);
+  pinMode(dip_pin_3, INPUT_PULLUP);
+  pinMode(dip_pin_4, INPUT_PULLUP);
+  pinMode(dip_pin_5, INPUT_PULLUP);
+  pinMode(dip_pin_6, INPUT_PULLUP);
+  pinMode(dip_pin_7, INPUT_PULLUP);
+  pinMode(dip_pin_8, INPUT_PULLUP);
+
+  pinMode(rotary_pin_0, INPUT_PULLUP);
+  pinMode(rotary_pin_1, INPUT_PULLUP);
+  pinMode(rotary_pin_2, INPUT_PULLUP);
+  pinMode(rotary_pin_3, INPUT_PULLUP);
+  pinMode(rotary_pin_4, INPUT_PULLUP);
+  pinMode(rotary_pin_5, INPUT_PULLUP);
+  pinMode(rotary_pin_6, INPUT_PULLUP);
+  
+  readDip();
+  LED_COUNT = numberLeds[num_led_byte];
+  for (unsigned int i=0; i < LED_COUNT; i++) { //Let's light random fireflies
+    all_on_leds[i] = i;
+  }
+  modulo = ceil(LED_COUNT/20);
+  strip.updateLength(LED_COUNT);
+  switch(num_led_byte) {
+    case 0:
+        Serial.println("Case 0");
+        delay_added_to_each_cycle = 12;
+        num_matrix_rows = 16;
+        break;
+    case 1:
+        Serial.println("Case 1");
+        delay_added_to_each_cycle = 9;
+        num_matrix_rows = 30;
+        break;
+    case 2:
+        Serial.println("Case 2");
+        delay_added_to_each_cycle = 8;
+        num_matrix_rows = 38;
+        break;     
+    default:
+        Serial.println("Case 3");
+        delay_added_to_each_cycle = 7;
+        num_matrix_rows = 50;
+  }
+
+  strip.begin();
+  strip.clear();
+  // Light last LED as a test if all of string is working.
+  strip.setPixelColor(LED_COUNT - 1, 255, 255, 0);
+  strip.show();
+  delay(4000);
+  Serial.print("In Setup the LED_COUNT from dip 5 and 4 is: ");
+  Serial.println(LED_COUNT);
+  strip.clear();
+  strip.show();
+} // End of Setup()
+
+void loop() {
+  readRotary();
+  Serial.print("Read from top of main loop ");
+  Serial.println(rotary_byte);
+  if (rotary_byte != 32 && rotary_byte != 64 ) {
+    randomFireflies();
+  }                                         
+  else {
+    if (rotary_byte == 32) {
+      allOnHueKnob();
+    }
+    else {
+      allOnColorCycle();
+    }
+  }
+} // End of mail Loop()
+
+void randomFireflies() {
+  //Serial.println("Top of randomFireflies()");
+  hue_inc = 2;
+  readRotary();
+  getDimmerValue();  
+  if (rotary_byte == 32 || rotary_byte == 64) {
+    return;
+  }  
+  if (loop_count%((2 * num_loops_in_rise) + num_loops_at_max) == 0) {  // Time complete loop for full firefly  
+    loop_time = (millis() - start_time);
+    //Serial.println(loop_time);
+    start_time = millis();
+  }
+  for (unsigned int i=0; i < num_matrix_rows; i++) { //Let's light random fireflies
+    if (lit_Matrix[i][0] >= 0) {
+      if (loop_count == lit_Matrix[i][3]) {
+        readDip();
+        //Serial.print("order_byte: ");
+        //Serial.println(order_byte);                                            
+        strip.updateType(rgb_permutations[order_byte]);      
+        getDimmerValue();       
+        readRotary();
+        setFromRotary(i);
+      } 
+      if (loop_count > lit_Matrix[i][3])  {
+          if (lit_Matrix[i][1] >= 0) {
+            if (lit_Matrix[i][1] < num_loops_in_rise)  {
+              lit_Matrix[i][1] =  lit_Matrix[i][1] + 1;
+            }
+            else {
+              lit_Matrix[i][1] = -lit_Matrix[i][1];
+            }
+            strip.setPixelColor(lit_Matrix[i][0], strip.Color(round(lit_Matrix[i][4]*pow(abs(lit_Matrix[i][1])/(float)num_loops_in_rise, rise_exponent)), round(lit_Matrix[i][5]*pow(abs(lit_Matrix[i][1])/(float)num_loops_in_rise, rise_exponent)), round(lit_Matrix[i][6]*pow(abs(lit_Matrix[i][1])/(float)num_loops_in_rise, rise_exponent))));
+        }
+        else {  // Not rising in illumination
+          if (lit_Matrix[i][2] < num_loops_at_max && lit_Matrix[i][1] < -num_loops_in_rise + 1 ) {  // Stay at max illumination for num_loops_at_max number of loops
+            lit_Matrix[i][2] =  lit_Matrix[i][2] + 1;
+          }
+          else  {  // illumination falls
+            lit_Matrix[i][2] = 0;
+            lit_Matrix[i][1] = lit_Matrix[i][1] + 1;
+            if (lit_Matrix[i][1] == 0)
+              move_firefly_flag = true;
+          }
+          strip.setPixelColor(lit_Matrix[i][0], strip.Color(round(lit_Matrix[i][4]*pow(abs(lit_Matrix[i][1])/(float)num_loops_in_rise, rise_exponent)), round(lit_Matrix[i][5]*pow(abs(lit_Matrix[i][1])/(float)num_loops_in_rise, rise_exponent)), round(lit_Matrix[i][6]*pow(abs(lit_Matrix[i][1])/(float)num_loops_in_rise, rise_exponent))));
+        }
+        lit_Matrix[i][3] = lit_Matrix[i][3] + 1;
+        if (move_firefly_flag)
+          moveFirefly(i,lit_Matrix[i][0]);
+      }
+    }
+  }
+  strip.show();
+  delay(delay_added_to_each_cycle);  // this delay increases the time for each loop to get fireflylight ing length to be ~1.7 seconds
+  loop_count = loop_count + 1;   
+} // end of randomFireflies()
+
+void allOnColorCycle() {
+  hue_inc = 2;
+  while (true) {
+    getDimmerValue();  
+    readRotary();   
+    if (rotary_byte != 64) {
+      //Serial.print("Read from top of allOnColorCycle().  Rotary = ");
+      //Serial.println(rotary_byte);
+      strip.clear();
+      strip.show();  
+      return;
+    }
+    else {
+      incrementHue();
+      //Serial.print("New hue is  = ");
+      //Serial.println(hue);      
+      hsv = CHSV (hue, 255, 255);
+      hsv2rgb_rainbow (hsv, rgb);
+      for(uint16_t i=0; i<LED_COUNT; i++) {
+        strip.setPixelColor(all_on_leds[i], ceil(rgb.red*dim_val), ceil(rgb.green*dim_val), ceil(rgb.blue*dim_val));
+        //Serial.print("i in for loop = ");
+        //Serial.println(i);
+        strip.show();
+      }
+      delay(100);
+    }
+  }
+}
+
+void allOnHueKnob() {
+  while (true) {
+    readRotary();   
+    if (rotary_byte != 32) {
+      //Serial.print("Read from top of allOnHueKnob().  Rotary = ");
+      //Serial.println(rotary_byte);
+      strip.clear();
+      strip.show();  
+      return;
+    }
+    else {
+      getHueValue();
+      if (old_hue - hue > 2 ) {
+        old_hue = hue;  
+      }
+      else {
+        hue = old_hue;
+      } 
+      Serial.print("Hue in allOnHueKnob = ");
+      Serial.println(hue); 
+      hsv = CHSV (hue, 255, 255);
+      hsv2rgb_rainbow (hsv, rgb);
+      for(uint16_t i=0; i<LED_COUNT; i++) {
+        strip.setPixelColor(all_on_leds[i], ceil(rgb.red*dim_val), ceil(rgb.green*dim_val), ceil(rgb.blue*dim_val));
+
+      //strip.clear();
+      strip.show();
+      }
+      //delay(100);
+    }
+  }
+} // End of allOnHueKnob()
+
+void moveFirefly(int led_slot, int lit_led) {
+  move_firefly_flag = false;
+  bool have_new_firefly = false;
+  int new_firefly = random(0, LED_COUNT);  // get LED candidate not already lit
+  while (have_new_firefly == false) {
+    while ( new_firefly == lit_Matrix[led_slot][0] || new_firefly == lit_led )
+      new_firefly = random(0, LED_COUNT);  // get LED candidate not already lit  
+    have_new_firefly = true;
+    //Serial.println(new_firefly);
+    for (int j=0; j < num_matrix_rows; j++)  {
+      if (lit_Matrix[led_slot][0] == new_firefly )
+        have_new_firefly = false;
+    } 
+  }
+  lit_Matrix[led_slot][0] = new_firefly;
+  lit_Matrix[led_slot][1] = 0;
+  lit_Matrix[led_slot][2] = 0;
+  // logic to start a firefly very quickly if there are no fireflies lit, else select random # of loops to start next firefly
+  int sum = 0;
+  for ( int i = 0; i < num_matrix_rows - 1; i++ )  
+  {
+    sum += lit_Matrix[led_slot][3];
+  }
+  if (sum == 0)  {
+    lit_Matrix[led_slot][3] = loop_count + 2;
+  }
+  else {
+    lit_Matrix[led_slot][3] = loop_count + 50 + random(0, 600);
+  }
+}  // End of moveFirefly()
+
+void getDimmerValue() {
+   // read the input on analog pin:                                                                                                                                                                                                                     
+  analogRead(dimmer_pin);
+  delay(5);
+  dim_val = float((1023 - analogRead(dimmer_pin)))/1023.0;
+  if (dim_val > .98) {
+    dim_val = 1.0;
+  }
+  else if (dim_val < 0.0156862745) {
+    dim_val = 0.011; // 0.015687;
+  }
+}  // End of getDimmerValues()
+
+void getNumffValue() {
+   // read the input on analog pin:                                                                                                                                                                                                                     
+  analogRead(num_ff_pin);
+  delay(5);
+  dim_val = float((1023 - analogRead(num_ff_pin)))/1023.0;
+  if (dim_val > .98) {
+    dim_val = 1.0;
+  }
+  else if (dim_val < 0.0156862745) {
+    dim_val = 0.011; // 0.015687;
+  }
+}  // End of getNumffValue()
+
+void getHueValue() {
+   // read the input on analog pin:                                                                                                                                                                                                                     
+  analogRead(hue_pin);
+  delay(5);
+  hue = 255 * analogRead(hue_pin)/1023;     //(1023 - analogRead(hue_pin)/1023.0);
+  //Serial.print("Hue: ");
+  //Serial.println(hue);
+}  // End of getHueValue()
+
+void incrementHue() {
+  if (hue < 256 - hue_inc) {
+    hue = hue + hue_inc;
+  }
+  else {
+    hue = 0;
+  }
+  //Serial.print("Hue: ");
+  //Serial.println(hue);
+}  // End of incrementHue()
+
+void readRotary() {
+  rotary_byte = 0;
+  for (byte x=0; x<7; x=x+1){
+    if(digitalRead(rotary_pin_array[x]) == LOW) { // test pin for electrical low that will be assigned as HIGH in next line
+        rotary_byte = rotary_byte | (1<<x); //shift the bit into position and OR into its place in the data byte 
+    }
+  }
+} // end of readRotary()
+
+void setFromRotary(unsigned int i) {
+  switch(rotary_byte) {
+    case 0:  // Yellow Firefly color
+      //Serial.println("Case 0 - Yellow Fireflies");
+      lit_Matrix[i][4] = ceil(255*dim_val); //Red for firefly color  // Warm white is 255, 175, 40
+      lit_Matrix[i][5] = ceil(255*dim_val); //Green for firefly color
+      lit_Matrix[i][6] = 0; //Blue for firefly color
+      break;
+    case 1:  // Warm white or dip switch choice of blue white
+      //Serial.println("Case 1 - Warm white or dip switch choice of blue white");
+      readDip();
+      getWhiteColor(i);
+      break;
+    case 2: //Halloween orange with occasional purple
+      //Serial.println("Case 2 - Halloween orange with occasional purple");
+      if (random(0,100) < 15)  {  // to randomly have skewed split between colors
+        hue = 192;
+        hsv = CHSV (hue, 255, 255);
+        hsv2rgb_rainbow (hsv, rgb); 
+        lit_Matrix[i][4] = ceil(rgb.red*dim_val);
+        lit_Matrix[i][5] = ceil(rgb.green*dim_val);
+        lit_Matrix[i][6] = ceil(rgb.blue*dim_val);  
+      }
+      else {
+        hue = 17;
+        hsv = CHSV (hue, 255, 255);
+        hsv2rgb_rainbow (hsv, rgb); 
+        lit_Matrix[i][4] = ceil(rgb.red*dim_val);
+        lit_Matrix[i][5] = ceil(rgb.green*dim_val);
+        lit_Matrix[i][6] = ceil(rgb.blue*dim_val);  
+      }
+      break;
+    case 4:  // Blue with occasional green
+      //Serial.println("Case 4 - Blue with occasional green");
+      if (random(0,100) < 15)  {  // to randomly have a 15/85 split between colors
+          lit_Matrix[i][4] = 0; //Red for Christmas color
+          lit_Matrix[i][5] = ceil(255*dim_val); //Green for ocassional color
+          lit_Matrix[i][6] = 0; //Blue for firefly color
+          }
+      else {
+        lit_Matrix[i][4] = 0; //Red
+        lit_Matrix[i][5] = 0; //Green
+        lit_Matrix[i][6] = ceil(255*dim_val); //Blue for main color
+      }
+      break;
+    case 8: // Hue selected by knob
+      //Serial.println("Case 8 - Hue selected by knob");
+      getHueValue();
+      hsv = CHSV (hue, 255, 255);
+      hsv2rgb_rainbow (hsv, rgb);
+      lit_Matrix[i][4] = ceil(rgb.red);
+      lit_Matrix[i][5] = ceil(rgb.green);
+      lit_Matrix[i][6] = ceil(rgb.blue);
+      break;
+    case 16: // Cycle through rainbow fireflies
+      //Serial.println("Case 1 - Cycle through rainbow");
+      hsv = CHSV (hue, 255, 255);
+      hsv2rgb_rainbow (hsv, rgb);
+      lit_Matrix[i][4] = ceil(rgb.red*dim_val);
+      lit_Matrix[i][5] = ceil(rgb.green*dim_val);
+      lit_Matrix[i][6] = ceil(rgb.blue*dim_val);
+      if (modulo == 0) {
+        incrementHue();
+      }
+      else if (firefly_spawn_count%modulo == 0) {
+      incrementHue();
+      }
+      firefly_spawn_count = firefly_spawn_count + 1;  
+      break; 
+    default:  // yellow firefly color
+      //Serial.println("Case: Default");
+      lit_Matrix[i][4] = ceil(255*dim_val); //Red for firefly color  // Warm white is 255, 175, 40
+      lit_Matrix[i][5] = ceil(255*dim_val); //Green for firefly color
+      lit_Matrix[i][6] = 0; //Blue for firefly color
+      break;          
+  }
+} // end of setFromRotary
+
+void getWhiteColor (unsigned int firefly_number)  {
+  unsigned int i = firefly_number;
+  //Serial.print("white_byte: ");
+  //Serial.println(white_byte);
+  switch(white_byte) {
+  case 0:
+      //Serial.println("Case 0");
+    lit_Matrix[i][4] = ceil(255*dim_val); //Red for firefly color  // Warm white is 255, 175, 40
+    lit_Matrix[i][5] = ceil(175*dim_val); //Green for firefly color
+    lit_Matrix[i][6] = ceil(40*dim_val); //Blue for firefly color
+      break;
+  case 1:
+    lit_Matrix[i][4] = ceil(200*dim_val); //Red for firefly color  // Warm white is 255, 175, 40
+    lit_Matrix[i][5] = ceil(255*dim_val); //Green for firefly color
+    lit_Matrix[i][6] = ceil(255*dim_val); //Blue for firefly color
+    break;
+  default:
+      lit_Matrix[i][4] = ceil(255*dim_val); //Red for firefly color  // Warm white is 255, 175, 40
+      lit_Matrix[i][5] = ceil(0*dim_val); //Green for firefly color
+      lit_Matrix[i][6] = ceil(255*dim_val); //Blue for firefly color
+  }
+} // End of getWhiteColor()
+
+void readDip() {
+  order_byte = 0;
+  for (byte x=0; x<3; x=x+1){
+    if(digitalRead(pin_array[x]) == LOW) { // test pin for electrical low that will be assigned as HIGH in next line
+        order_byte = order_byte | (1<<x); //shift the bit into position and OR into its place in the data byte 
+    }
+  }
+  num_led_byte = 0;
+  for (byte x=0; x<2; x=x+1){
+    if(digitalRead(pin_array[x+3]) == LOW) { // test pin for electrical low that will be assigned as HIGH in next line
+        num_led_byte = num_led_byte | (1<<x); //shift the bit into position and OR into its place in the data byte 
+    }
+  }
+  white_byte = 0;
+  for (byte x=0; x<1; x=x+1){
+    if(digitalRead(pin_array[x+5]) == LOW) { // test pin for electrical low that will be assigned as HIGH in next line
+        white_byte = white_byte | (1<<x); //shift the bit into position and OR into its place in the data byte 
+    }
+  //Serial.print("white_byte: ");
+  //Serial.println(white_byte);
+  }
+  color_byte = 0;
+  for (byte x=0; x<2; x=x+1){
+    if(digitalRead(pin_array[x+6]) == LOW) { // test pin for electrical low that will be assigned as HIGH in next line
+        color_byte = color_byte | (1<<x); //shift the bit into position and OR into its place in the data byte 
+    }
+  //Serial.print("color_byte loop: ");
+  //Serial.println(color_byte);
+  }
+  routine_byte = 0;
+  for (byte x=0; x<3; x=x+1){
+    if(digitalRead(pin_array[x+5]) == LOW) { // test pin for electrical low that will be assigned as HIGH in next line
+        routine_byte = routine_byte | (1<<x); //shift the bit into position and OR into its place in the data byte 
+    }
+  }
+  //Serial.print("routine_byte: ");
+  //Serial.println(routine_byte);
+} // End of readDip()
+
+void get_dip_color (unsigned int firefly_number)  {
+  unsigned int i = firefly_number;
+  switch(routine_byte) {
+  case 0:
+      //Serial.println("Case 0");
+    lit_Matrix[i][4] = ceil(255*dim_val); //Red for firefly color  // Warm white is 255, 175, 40
+    lit_Matrix[i][5] = ceil(175*dim_val); //Green for firefly color
+    lit_Matrix[i][6] = ceil(40*dim_val); //Blue for firefly color
+      break;
+  case 1:
+    lit_Matrix[i][4] = ceil(255*dim_val); //Red for firefly color  // Warm white is 255, 175, 40
+    lit_Matrix[i][5] = ceil(210*dim_val); //Green for firefly color
+    lit_Matrix[i][6] = ceil(100*dim_val); //Blue for firefly color
+      break;
+  case 2:
+    lit_Matrix[i][4] = ceil(255*dim_val); //Red for firefly color  // Warm white is 255, 175, 40
+    lit_Matrix[i][5] = ceil(255*dim_val); //Green for firefly color
+    lit_Matrix[i][6] = ceil(255*dim_val); //Blue for firefly color
+    break;     
+  case 3:
+    // Do nothing as logic for this seting is handled in main loop to provide changing color through rainbow
+    break;    
+  case 4:
+    lit_Matrix[i][4] = ceil(0*dim_val); //Red for firefly color  // Warm white is 255, 175, 40
+    lit_Matrix[i][5] = ceil(0*dim_val); //Green for firefly color
+    lit_Matrix[i][6] = ceil(255*dim_val); //Blue for firefly color
+    break;    
+   case 5:
+    lit_Matrix[i][4] = ceil(0*dim_val); //Red for firefly color  // Warm white is 255, 175, 40
+    lit_Matrix[i][5] = ceil(255*dim_val); //Green for firefly color
+    lit_Matrix[i][6] = ceil(0*dim_val); //Blue for firefly color
+    break;  
+   case 6:
+    lit_Matrix[i][4] = ceil(255*dim_val); //Red for firefly color  // Warm white is 255, 175, 40
+    lit_Matrix[i][5] = ceil(0*dim_val); //Green for firefly color
+    lit_Matrix[i][6] = ceil(0*dim_val); //Blue for firefly color
+    break;    
+    default:
+      lit_Matrix[i][4] = ceil(255*dim_val); //Red for firefly color  // Warm white is 255, 175, 40
+      lit_Matrix[i][5] = ceil(0*dim_val); //Green for firefly color
+      lit_Matrix[i][6] = ceil(255*dim_val); //Blue for firefly color
+    }
+} // End of get_dip_color()
